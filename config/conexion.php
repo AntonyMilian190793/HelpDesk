@@ -11,7 +11,7 @@
 
                 return $conectar;
             }catch (Exception $e){
-                print("Error BD!: ".$e->getMessage()."<br/>");
+                print "Error BD!: ".$e->getMessage()."<br/>";
                 die();
             }
         }
@@ -20,7 +20,7 @@
             return $this->dbh->query("SET NAMES 'utf8'");
         }
 
-        public function ruta(){
+        public static function ruta(){
             return "http://localhost:8080/HelpDesk/";
         }
     }
