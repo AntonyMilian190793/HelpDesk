@@ -49,32 +49,36 @@ if (isset($_SESSION["usu_id"])) {
 					<h5 class="m-t-lg with-border">Ingresar Información</h5>
 
 					<div class="row">
-						<div class="col-lg-6">
-							<fieldset class="form-group">
-								<label class="form-label semibold" for="exampleInput">Categoría</label>
-								<select id="cat_id" class="form-control">
+						<form method="post" id="ticket_form">
 
-								</select>
-							</fieldset>
-						</div>
-						<div class="col-lg-6">
-							<fieldset class="form-group">
-								<label class="form-label semibold" for="exampleInputEmail1">Título</label>
-								<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Ingrese Título">
-							</fieldset>
-						</div>
-						<div class="col-lg-12">
-							<fieldset class="form-group">
-								<label class="form-label semibold" for="exampleInputPassword1">Descripción</label>
-								<div class="summernote-theme-1">
-									<textarea class="summernote" id="ticket_descrip" name="name">Ingrese insidencia</textarea>
-								</div>
-							</fieldset>
-						</div>
-						<div class="col-lg-12">
-							<button type="button" class="btn btn-rounded btn-inline btn-primary">Guardar</button>
-						</div>
+							<input type="hidden" name="usu_id" id="usu_id" value="<?php echo $_SESSION["usu_id"] ?>">
 
+							<div class="col-lg-6">
+								<fieldset class="form-group">
+									<label class="form-label semibold" for="exampleInput">Categoría</label>
+									<select id="cat_id" name="cat_id" class="form-control">
+
+									</select>
+								</fieldset>
+							</div>
+							<div class="col-lg-6">
+								<fieldset class="form-group">
+									<label class="form-label semibold" for="tick_titulo">Título</label>
+									<input type="text" class="form-control" id="tick_titulo" name="tick_titulo" placeholder="Ingrese Título">
+								</fieldset>
+							</div>
+							<div class="col-lg-12">
+								<fieldset class="form-group">
+									<label class="form-label semibold" for="tick_descip">Descripción</label>
+									<div class="summernote-theme-1">
+										<textarea id="tick_descrip" name="tick_descrip" class="summernote" name="name"></textarea>
+									</div>
+								</fieldset>
+							</div>
+							<div class="col-lg-12">
+								<button type="submit" name="action" value="add" class="btn btn-rounded btn-inline btn-primary">Guardar</button>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
