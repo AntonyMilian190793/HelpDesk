@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-09-2021 a las 07:34:50
+-- Tiempo de generación: 04-09-2021 a las 03:09:03
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 8.0.7
 
@@ -46,6 +46,29 @@ INSERT INTO `tm_categoria` (`cat_id`, `cat_nom`, `est`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tm_ticket`
+--
+
+CREATE TABLE `tm_ticket` (
+  `ticket_id` int(11) NOT NULL,
+  `usu_id` int(11) NOT NULL,
+  `cat_id` int(11) NOT NULL,
+  `tick_titulo` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
+  `tick_descrip` varchar(9000) COLLATE utf8_spanish_ci NOT NULL,
+  `est` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `tm_ticket`
+--
+
+INSERT INTO `tm_ticket` (`ticket_id`, `usu_id`, `cat_id`, `tick_titulo`, `tick_descrip`, `est`) VALUES
+(1, 1, 1, 'Test', 'Test', 1),
+(6, 1, 2, 'Test ', 'Test 1', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tm_usuario`
 --
 
@@ -79,6 +102,12 @@ ALTER TABLE `tm_categoria`
   ADD PRIMARY KEY (`cat_id`);
 
 --
+-- Indices de la tabla `tm_ticket`
+--
+ALTER TABLE `tm_ticket`
+  ADD PRIMARY KEY (`ticket_id`);
+
+--
 -- Indices de la tabla `tm_usuario`
 --
 ALTER TABLE `tm_usuario`
@@ -93,6 +122,12 @@ ALTER TABLE `tm_usuario`
 --
 ALTER TABLE `tm_categoria`
   MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `tm_ticket`
+--
+ALTER TABLE `tm_ticket`
+  MODIFY `ticket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `tm_usuario`
