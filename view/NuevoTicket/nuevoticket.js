@@ -27,7 +27,7 @@ function guardaryeditar(e){
             console.log(datos);
             $('#tick_titulo').val('');
             $('#tick_descrip').summernote('reset');
-            swal("Correcto!", "Registrado Correctamebte", "success");
+            swal("Correcto!", "Registrado Correctamente", "success");
         }
     });
 }

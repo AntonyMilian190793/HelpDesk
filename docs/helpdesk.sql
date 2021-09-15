@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-09-2021 a las 03:09:03
--- Versión del servidor: 10.4.19-MariaDB
--- Versión de PHP: 8.0.7
+-- Tiempo de generación: 15-09-2021 a las 06:45:50
+-- Versión del servidor: 10.4.20-MariaDB
+-- Versión de PHP: 7.3.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -64,7 +64,10 @@ CREATE TABLE `tm_ticket` (
 
 INSERT INTO `tm_ticket` (`ticket_id`, `usu_id`, `cat_id`, `tick_titulo`, `tick_descrip`, `est`) VALUES
 (1, 1, 1, 'Test', 'Test', 1),
-(6, 1, 2, 'Test ', 'Test 1', 1);
+(6, 1, 2, 'Test ', 'Test 1', 1),
+(21, 1, 1, 'Test2', '<p>Tes2<br></p>', 1),
+(22, 1, 1, 'Test2', '<p>aaa<br></p>', 1),
+(23, 1, 2, 'awfefaaf', '<p>afdasffa<br></p>', 1);
 
 -- --------------------------------------------------------
 
@@ -127,7 +130,7 @@ ALTER TABLE `tm_categoria`
 -- AUTO_INCREMENT de la tabla `tm_ticket`
 --
 ALTER TABLE `tm_ticket`
-  MODIFY `ticket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `ticket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `tm_usuario`
