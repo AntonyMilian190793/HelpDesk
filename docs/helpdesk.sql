@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-09-2021 a las 06:45:50
+-- Tiempo de generación: 17-09-2021 a las 00:41:37
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 7.3.29
 
@@ -55,6 +55,7 @@ CREATE TABLE `tm_ticket` (
   `cat_id` int(11) NOT NULL,
   `tick_titulo` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
   `tick_descrip` varchar(9000) COLLATE utf8_spanish_ci NOT NULL,
+  `fech_crea` datetime DEFAULT NULL,
   `est` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -62,12 +63,11 @@ CREATE TABLE `tm_ticket` (
 -- Volcado de datos para la tabla `tm_ticket`
 --
 
-INSERT INTO `tm_ticket` (`ticket_id`, `usu_id`, `cat_id`, `tick_titulo`, `tick_descrip`, `est`) VALUES
-(1, 1, 1, 'Test', 'Test', 1),
-(6, 1, 2, 'Test ', 'Test 1', 1),
-(21, 1, 1, 'Test2', '<p>Tes2<br></p>', 1),
-(22, 1, 1, 'Test2', '<p>aaa<br></p>', 1),
-(23, 1, 2, 'awfefaaf', '<p>afdasffa<br></p>', 1);
+INSERT INTO `tm_ticket` (`ticket_id`, `usu_id`, `cat_id`, `tick_titulo`, `tick_descrip`, `fech_crea`, `est`) VALUES
+(1, 1, 1, 'Test', 'Test', '2021-09-16 15:16:54', 1),
+(6, 1, 2, 'Test2 ', 'Test 2', '2021-09-14 15:17:01', 1),
+(21, 1, 1, 'Test3', '<p>Tes3<br></p>', '2021-09-01 15:17:06', 1),
+(24, 1, 2, 'Test4', '<p><b>Test4</b><br></p>', '2021-09-16 15:19:03', 1);
 
 -- --------------------------------------------------------
 
@@ -81,6 +81,7 @@ CREATE TABLE `tm_usuario` (
   `usu_ape` varchar(150) COLLATE utf8_spanish_ci DEFAULT NULL,
   `usu_correo` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
   `usu_pass` varchar(29) COLLATE utf8_spanish_ci NOT NULL,
+  `rol_id` int(11) DEFAULT NULL,
   `fecha_creacion` datetime DEFAULT NULL,
   `fecha_modificacion` datetime DEFAULT NULL,
   `fecha_elim` datetime DEFAULT NULL,
@@ -91,8 +92,9 @@ CREATE TABLE `tm_usuario` (
 -- Volcado de datos para la tabla `tm_usuario`
 --
 
-INSERT INTO `tm_usuario` (`usu_id`, `usu_nom`, `usu_ape`, `usu_correo`, `usu_pass`, `fecha_creacion`, `fecha_modificacion`, `fecha_elim`, `est`) VALUES
-(1, 'Antony', 'Milian', 'antonymilian19@gmail.com', '123456', '2021-08-27 16:17:11', NULL, NULL, 1);
+INSERT INTO `tm_usuario` (`usu_id`, `usu_nom`, `usu_ape`, `usu_correo`, `usu_pass`, `rol_id`, `fecha_creacion`, `fecha_modificacion`, `fecha_elim`, `est`) VALUES
+(1, 'Antony', 'Milian', 'antonymilian19@gmail.com', '123456', 1, '2021-08-27 16:17:11', NULL, NULL, 1),
+(2, 'Jorge', 'Montalvo', 'jorgemontalvo19@gmail.com', '123456', 2, '2021-08-27 16:17:11', NULL, NULL, 1);
 
 --
 -- Índices para tablas volcadas
@@ -130,13 +132,13 @@ ALTER TABLE `tm_categoria`
 -- AUTO_INCREMENT de la tabla `tm_ticket`
 --
 ALTER TABLE `tm_ticket`
-  MODIFY `ticket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `ticket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `tm_usuario`
 --
 ALTER TABLE `tm_usuario`
-  MODIFY `usu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `usu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

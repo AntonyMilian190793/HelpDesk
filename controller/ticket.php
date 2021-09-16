@@ -18,6 +18,8 @@
                 $sub_array[] = $row["ticket_id"];
                 $sub_array[] = $row["cat_nom"];
                 $sub_array[] = $row["tick_titulo"];
+                // $sub_array[] = date_format($row["fech_crea"], 'd/m/Y H:i:s');
+                $sub_array[] = date("d/m/Y H:i:s", strtotime($row["fech_crea"]));
                 $sub_array[] = '<button type="button" onClick="ver('.$row["ticket_id"].');"  id="'.$row["ticket_id"].'" class="btn btn-inline primary btn-sm ladda-button"><i class="fa fa-eye"></i></button>';
                 $data[] = $sub_array;
             }
