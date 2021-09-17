@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-09-2021 a las 00:41:37
+-- Tiempo de generación: 18-09-2021 a las 00:44:59
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 7.3.29
 
@@ -55,6 +55,7 @@ CREATE TABLE `tm_ticket` (
   `cat_id` int(11) NOT NULL,
   `tick_titulo` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
   `tick_descrip` varchar(9000) COLLATE utf8_spanish_ci NOT NULL,
+  `tick_estado` varchar(15) COLLATE utf8_spanish_ci DEFAULT NULL,
   `fech_crea` datetime DEFAULT NULL,
   `est` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -63,11 +64,11 @@ CREATE TABLE `tm_ticket` (
 -- Volcado de datos para la tabla `tm_ticket`
 --
 
-INSERT INTO `tm_ticket` (`ticket_id`, `usu_id`, `cat_id`, `tick_titulo`, `tick_descrip`, `fech_crea`, `est`) VALUES
-(1, 1, 1, 'Test', 'Test', '2021-09-16 15:16:54', 1),
-(6, 1, 2, 'Test2 ', 'Test 2', '2021-09-14 15:17:01', 1),
-(21, 1, 1, 'Test3', '<p>Tes3<br></p>', '2021-09-01 15:17:06', 1),
-(24, 1, 2, 'Test4', '<p><b>Test4</b><br></p>', '2021-09-16 15:19:03', 1);
+INSERT INTO `tm_ticket` (`ticket_id`, `usu_id`, `cat_id`, `tick_titulo`, `tick_descrip`, `tick_estado`, `fech_crea`, `est`) VALUES
+(1, 1, 1, 'Test', 'Test', 'Abierto', '2021-09-16 15:16:54', 1),
+(6, 1, 2, 'Test2 ', 'Test 2', 'Abierto', '2021-09-14 15:17:01', 1),
+(21, 1, 1, 'Test3', '<p>Tes3<br></p>', 'Abierto', '2021-09-01 15:17:06', 1),
+(24, 1, 2, 'Test4', '<p><b>Test4</b><br></p>', 'Abierto', '2021-09-16 15:19:03', 1);
 
 -- --------------------------------------------------------
 
