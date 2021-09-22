@@ -8,6 +8,13 @@ $(document).ready(function(){
         $('#lbldetalle').html(data);
     });
 
+    $.post("../../controller/ticket.php?op=mostrar", { tick_id: tick_id}, function(data){
+        data = JSON.parse(data);
+        $('#lblestado').html(data.tick_estado);
+        $('#lblnomusuario').html(data.usu_nom + ' ' + data.usu_ape);
+        $('#lblfechcrea').html(data.fech_crea);
+    });
+
     $('#tickd_descrip').summernote({
         height: 150,
         lang: "es-ES",

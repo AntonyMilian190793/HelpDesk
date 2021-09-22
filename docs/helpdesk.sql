@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-09-2021 a las 00:44:59
+-- Tiempo de generación: 22-09-2021 a las 03:11:23
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 7.3.29
 
@@ -20,6 +20,35 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `helpdesk`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `td_ticketdelle`
+--
+
+CREATE TABLE `td_ticketdelle` (
+  `tickd_id` int(11) NOT NULL,
+  `tick_id` int(11) NOT NULL,
+  `usu_id` int(11) NOT NULL,
+  `tickd_descrip` mediumtext NOT NULL,
+  `fech_crea` datetime NOT NULL,
+  `est` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `td_ticketdelle`
+--
+
+INSERT INTO `td_ticketdelle` (`tickd_id`, `tick_id`, `usu_id`, `tickd_descrip`, `fech_crea`, `est`) VALUES
+(1, 1, 2, 'Te respondo', '2021-09-21 09:53:10', 1),
+(2, 1, 1, 'Soy el usuario respondiendo', '2021-09-21 09:53:49', 1),
+(3, 1, 2, 'Para resolver tu problema reinicia tu equipo', '2021-09-21 09:54:14', 1),
+(4, 1, 1, 'Con eso se resolvió el problema, gracias', '2021-09-21 09:54:43', 1),
+(5, 1, 2, 'Muchas gracias por su confirmación, por favor cerrar el ticket', '2021-09-21 09:55:33', 1),
+(6, 1, 1, 'doble', '2021-09-21 11:23:31', 1),
+(7, 6, 2, 'Te respondo', '2021-09-21 09:53:10', 1),
+(8, 6, 1, 'Soy el usuario respondiendo', '2021-09-21 09:54:14', 1);
 
 -- --------------------------------------------------------
 
@@ -102,6 +131,12 @@ INSERT INTO `tm_usuario` (`usu_id`, `usu_nom`, `usu_ape`, `usu_correo`, `usu_pas
 --
 
 --
+-- Indices de la tabla `td_ticketdelle`
+--
+ALTER TABLE `td_ticketdelle`
+  ADD PRIMARY KEY (`tickd_id`);
+
+--
 -- Indices de la tabla `tm_categoria`
 --
 ALTER TABLE `tm_categoria`
@@ -122,6 +157,12 @@ ALTER TABLE `tm_usuario`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `td_ticketdelle`
+--
+ALTER TABLE `td_ticketdelle`
+  MODIFY `tickd_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `tm_categoria`

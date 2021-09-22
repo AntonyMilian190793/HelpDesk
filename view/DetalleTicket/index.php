@@ -33,9 +33,9 @@ if (isset($_SESSION["usu_id"])) {
 						<div class="tbl-row">
 							<div class="tbl-cell">
 								<h3>Detalle Ticket - 1</h3>
-								<span class="label label-pill label-danger">Cerrado</span>
-								<span class="label label-pill label-primary">Nombre del Usuario</span>
-								<span class="label label-pill label-success">99/999/999</span>
+								<div id="lblestado"></div>
+								<span class="label label-pill label-primary" id="lblnomusuario"></span>
+								<span class="label label-pill label-default" id="lblfechcrea"></span>
 								<ol class="breadcrumb breadcrumb-simple">
 									<li><a href="#">Home</a></li>
 									<li class="active">Detalle Ticket</li>
