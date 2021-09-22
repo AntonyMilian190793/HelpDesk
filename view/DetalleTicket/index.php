@@ -1,210 +1,125 @@
 <?php
 
-	require_once("../../config/conexion.php");
-	if(isset($_SESSION["usu_id"])){
+require_once("../../config/conexion.php");
+if (isset($_SESSION["usu_id"])) {
 
 ?>
 
-<!DOCTYPE html>
-<html>
+	<!DOCTYPE html>
+	<html>
 
-    <?php require_once("../MainHead/head.php");?>
+	<?php require_once("../MainHead/head.php"); ?>
 
-    <title>It For You::Detalle Ticket</title>
+	<title>It For You::Detalle Ticket</title>
 
-</head>
-<body class="with-side-menu">
+	</head>
 
-    <?php require_once("../MainHeader/header.php"); ?>
+	<body class="with-side-menu">
+
+		<?php require_once("../MainHeader/header.php"); ?>
 
 
-	<div class="mobile-menu-left-overlay"></div>
+		<div class="mobile-menu-left-overlay"></div>
 
-	
-	<?php require_once("../MainNav/nav.php"); ?>
 
-	<!-- Contenido -->
-	<div class="page-content">
-		<div class="container-fluid">
+		<?php require_once("../MainNav/nav.php"); ?>
 
-        <section class="activity-line">
-				<article class="activity-line-item box-typical">
-					<div class="activity-line-date">
-						Tuesday<br/>
-						sep 9
-					</div>
-					<header class="activity-line-item-header">
-						<div class="activity-line-item-user">
-							<div class="activity-line-item-user-photo">
-								<a href="#">
-									<img src="img/photo-64-2.jpg" alt="">
-								</a>
+		<!-- Contenido -->
+		<div class="page-content">
+			<div class="container-fluid">
+
+				<header class="section-header">
+					<div class="tbl">
+						<div class="tbl-row">
+							<div class="tbl-cell">
+								<h3>Detalle Ticket - 1</h3>
+								<span class="label label-pill label-danger">Cerrado</span>
+								<span class="label label-pill label-primary">Nombre del Usuario</span>
+								<span class="label label-pill label-success">99/999/999</span>
+								<ol class="breadcrumb breadcrumb-simple">
+									<li><a href="#">Home</a></li>
+									<li class="active">Detalle Ticket</li>
+								</ol>
 							</div>
-							<div class="activity-line-item-user-name">Tim Colins</div>
-							<div class="activity-line-item-user-status">Developer, Palo Alto</div>
 						</div>
-					</header>
-					<div class="activity-line-action-list">
-						<section class="activity-line-action">
-							<div class="time">10:40 AM</div>
-							<div class="cont">
-								<div class="cont-in">
-									<p>Uploaded 3 Images to Daily UI Album</p>
-									<ul class="previews">
-										<li>
-											<a class="fancybox" rel="gall-1" href="img/pic.jpg">																	<img src="http://placehold.it/120x80" alt=""/>
-											</a>
-										</li>
-										<li>
-											<a class="fancybox" rel="gall-1" href="img/pic.jpg">																	<img src="http://placehold.it/120x80" alt=""/>
-											</a>
-										</li>
-										<li>
-											<a class="fancybox" rel="gall-1" href="img/pic.jpg">																	<img src="http://placehold.it/120x80" alt=""/>
-											</a>
-										</li>
-										<li>
-											<a class="fancybox" rel="gall-1" href="img/pic.jpg">																	<img src="http://placehold.it/120x80" alt=""/>
-											</a>
-										</li>
-										<li>
-											<a class="fancybox" rel="gall-1" href="img/pic.jpg">																	<img src="http://placehold.it/120x80" alt=""/>
-											</a>
-										</li>
-									</ul>
-									<ul class="meta">
-										<li><a href="#">5 Comments</a></li>
-										<li><a href="#">5 Likes</a></li>
-									</ul>
-								</div>
-							</div>
-						</section><!--.activity-line-action-->
-						<section class="activity-line-action">
-							<div class="time">10:40 AM</div>
-							<div class="cont">
-								<div class="cont-in">
-									<p>Left a comment to <a href="#">Olga Gozha’s</a> Image</p>
-									<div class="tbl img-comment">
-										<div class="tbl-row">
-											<div class="tbl-cell tbl-cell-img">
-												<img src="http://placehold.it/120x80" alt=""/>
-											</div>
-											<div class="tbl-cell tbl-cell-txt">
-												«Had a meeting about shopping cart experience, with Isobel Patterson, Josh Weller»
-											</div>
-										</div>
+					</div>
+				</header>
+
+				<div class="box-typical box-typical-padding">
+					<div class="row">
+
+
+						<div class="col-lg-6">
+							<fieldset class="form-group">
+								<label class="form-label semibold" for="cat_nom">Categoría</label>
+								<input type="text" class="form-control" id="cat_nom" name="cat_nom" readonly>
+							</fieldset>
+						</div>
+
+
+						<div class="col-lg-6">
+							<fieldset class="form-group">
+								<label class="form-label semibold" for="tick_titulo">Título</label>
+								<input type="text" class="form-control" id="tick_titulo" name="tick_titulo" readonly>
+							</fieldset>
+						</div>
+						
+						<div class="col-lg-12">
+							<fieldset class="form-group">
+								<label class="form-label semibold" for="tick_titulo">Descripción</label>
+								<input type="text" class="form-control" id="tick_titulo" name="tick_titulo">
+							</fieldset>
+						</div>
+
+					</div>
+				</div>
+
+				
+
+				<section class="activity-line" id="lbldetalle">
+
+				</section>
+
+				<div class="box-typical box-typical-padding">
+
+				<p>
+					Ingrese su duda o consulta
+
+				</p>
+
+					<div class="row">
+							
+							<div class="col-lg-12">
+								<fieldset class="form-group">
+									<label class="form-label semibold" for="tickd_descip">Descripción</label>
+									<div class="summernote-theme-1">
+										<textarea id="tickd_descrip" name="tickd_descrip" class="summernote" name="name"></textarea>
 									</div>
-									<ul class="meta">
-										<li><a href="#">5 Comments</a></li>
-										<li><a href="#">5 Likes</a></li>
-									</ul>
-								</div>
+								</fieldset>
 							</div>
-						</section><!--.activity-line-action-->
-						<section class="activity-line-action">
-							<div class="time">10:40 AM</div>
-							<div class="cont">
-								<div class="cont-in">
-									<p>Uploaded 3 files</p>
-									<ul class="attach-list">
-										<li>
-											<i class="font-icon font-icon-page"></i>
-											<a href="#">example.avi</a>
-										</li>
-										<li>
-											<i class="font-icon font-icon-page"></i>
-											<a href="#">activity.psd</a>
-										</li>
-										<li>
-											<i class="font-icon font-icon-page"></i>
-											<a href="#">example.psd</a>
-										</li>
-									</ul>
-									<ul class="meta">
-										<li><a href="#">5 Comments</a></li>
-										<li><a href="#">5 Likes</a></li>
-									</ul>
-								</div>
+							<div class="col-lg-12">
+								<button type="submit" name="action" value="add" class="btn btn-rounded btn-inline btn-primary">Enviar</button>
+								<button type="submit" name="action" value="add" class="btn btn-rounded btn-inline btn-danger">Cerrar Ticket</button>
 							</div>
-						</section><!--.activity-line-action-->
-					</div><!--.activity-line-action-list-->
-				</article>
-
-				<article class="activity-line-item box-typical">
-					<div class="activity-line-date">
-						Monday<br/>
-						sep 8
 					</div>
-					<header class="activity-line-item-header">
-						<div class="activity-line-item-user">
-							<div class="activity-line-item-user-photo">
-								<a href="#">
-									<img src="img/photo-64-2.jpg" alt="">
-								</a>
-							</div>
-							<div class="activity-line-item-user-name">Tim Colins</div>
-							<div class="activity-line-item-user-status">Developer, Palo Alto</div>
-						</div>
-					</header>
-					<div class="activity-line-action-list">
-						<section class="activity-line-action">
-							<div class="time">10:40 AM</div>
-							<div class="cont">
-								<div class="cont-in">
-									<p>Started nes UI migration</p>
-									<ul class="meta">
-										<li><a href="#">5 Comments</a></li>
-										<li><a href="#">5 Likes</a></li>
-									</ul>
-								</div>
-							</div>
-						</section><!--.activity-line-action-->
-						<section class="activity-line-action">
-							<div class="dot"></div>
-							<div class="time">10:40 AM</div>
-							<div class="cont">
-								<div class="cont-in">
-									<p>Had a meeting about shopping cart experience, with Isobel Patterson, Josh Weller, Mark Taylor</p>
-									<ul class="meta">
-										<li><a href="#">5 Comments</a></li>
-										<li><a href="#">5 Likes</a></li>
-									</ul>
-								</div>
-							</div>
-						</section><!--.activity-line-action-->
-						<section class="activity-line-action">
-							<div class="time">10:40 AM</div>
-							<div class="cont">
-								<div class="cont-in">
-									<p>Had a meeting about shopping cart experience, with Isobel Patterson, Josh Weller, Mark Taylor</p>
-									<ul class="meta">
-										<li><a href="#">5 Comments</a></li>
-										<li><a href="#">1 Likes</a></li>
-									</ul>
-								</div>
-							</div>
-						</section><!--.activity-line-action-->
-					</div><!--.activity-line-action-list-->
-				</article>
+				</div>
 
-
-			</section>
-
+			</div>
 		</div>
-	</div>
-	<!-- contenido -->
+		<!-- contenido -->
 
-    <?php require_once("../MainJs/js.php"); ?>
-	
-	<script type="text/javascript" src="detalleticket.js"></script>
+		<?php require_once("../MainJs/js.php"); ?>
 
-<script src="js/app.js"></script>
-</body>
-</html>
+		<script type="text/javascript" src="detalleticket.js"></script>
+
+		<script src="js/app.js"></script>
+	</body>
+
+	</html>
 <?php
 
-	}else{
-		header("Location:".Conectar::ruta()."index.php");
-	}
+} else {
+	header("Location:" . Conectar::ruta() . "index.php");
+}
 
 ?>

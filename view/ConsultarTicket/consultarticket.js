@@ -119,7 +119,7 @@ $(document).ready(function(){
     });
 
     function ver(ticket_id) {
-        console.log(ticket_id);
+        window.open('http://localhost:8080/HelpDesk/view/DetalleTicket/?ID='+ ticket_id +'');
     }
 
 
