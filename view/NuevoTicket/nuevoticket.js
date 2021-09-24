@@ -25,21 +25,27 @@ $(document).ready(function() {
 });
 
 function guardaryeditar(e){
+
     e.preventDefault();
     var formData = new FormData($("#ticket_form")[0]);
-    $.ajax({
-        url:"../../controller/ticket.php?op=insert", 
-        type: "POST",
-        data: formData,
-        contentType: false,
-        processData: false,
-        success: function(datos){
-            console.log(datos);
-            $('#tick_titulo').val('');
-            $('#tick_descrip').summernote('reset');
-            swal("Correcto!", "Registrado Correctamente", "success");
-        }
-    });
+    if($('#tick_descrip').summernote('isEmpty') || $('#tick_titulo').val() == ''){
+        swal("Advetencia!", "Campos Vacíos", "warning");
+    }else{
+
+        $.ajax({
+            url:"../../controller/ticket.php?op=insert", 
+            type: "POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(datos){
+                console.log(datos);
+                $('#tick_titulo').val('');
+                $('#tick_descrip').summernote('reset');
+                swal("Correcto!", "Registrado Correctamente", "success");
+            }
+        });
+    }
 }
 
 init();
