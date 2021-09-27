@@ -6,17 +6,7 @@ $(document).ready(function(){
     var tick_id = getUrlParameter('ID');
 
     listardetalle(tick_id);
-    $.post("../../controller/ticket.php?op=mostrar", { tick_id: tick_id}, function(data){
-        data = JSON.parse(data);
-        $('#lblestado').html(data.tick_estado);
-        $('#lblnomusuario').html(data.usu_nom + ' ' + data.usu_ape);
-        $('#lblfechcrea').html(data.fech_crea);
 
-        $('#lblnomidticket').html("Detalle Ticket " + data.ticket_id);
-        $('#cat_nom').val(data.cat_nom);
-        $('#tick_titulo').val(data.tick_titulo);
-        $('#tickd_descripusu').summernote('code', data.tick_descrip);
-    });
 
     $('#tickd_descrip').summernote({
         height: 400,
@@ -75,12 +65,54 @@ $(document).on("click", "#btnenviar", function(){
 
 
 $(document).on("click", "#btncerrarticket", function(){
-    
+    swal({
+        title: "HelpDesk",
+        text: "Está seguro de cerrar el ticket?",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonClass: "btn-warning",
+        confirmButtonText: "Si",
+        cancelButtonText: "No",
+        closeOnConfirm: false
+    },
+    function(isConfirm) {
+        if (isConfirm) {
+            var tick_id = getUrlParameter('ID');
+            var usu_id = $('#user_idx').val();
+            $.post("../../controller/ticket.php?op=update", { tick_id : tick_id, usu_id : usu_id }, function(data){
+                
+            });
+            listardetalle(tick_id);
+            swal({
+                title: "HelpDesk!",
+                text: "Ticket cerrado correctamente.",
+                type: "success",
+                confirmButtonClass: "btn-success"
+            });
+        }
+    });
 });
 
 function listardetalle(tick_id){
     $.post("../../controller/ticket.php?op=listardetalle", { tick_id: tick_id}, function(data){
         $('#lbldetalle').html(data);
+    });
+
+    $.post("../../controller/ticket.php?op=mostrar", { tick_id: tick_id}, function(data){
+        data = JSON.parse(data);
+        $('#lblestado').html(data.tick_estado);
+        $('#lblnomusuario').html(data.usu_nom + ' ' + data.usu_ape);
+        $('#lblfechcrea').html(data.fech_crea);
+
+        $('#lblnomidticket').html("Detalle Ticket " + data.ticket_id);
+        $('#cat_nom').val(data.cat_nom);
+        $('#tick_titulo').val(data.tick_titulo);
+        $('#tickd_descripusu').summernote('code', data.tick_descrip);
+
+        if(data.tick_estado_texto == "Cerrado"){
+            $('#pnldetalle').hide();
+        }
+        
     });
 }
 
