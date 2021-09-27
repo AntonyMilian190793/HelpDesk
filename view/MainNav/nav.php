@@ -1,5 +1,5 @@
 <?php
-if($_SESSION["rol_id"]==1){
+if($_SESSION["rol_id"] == 1){
     ?>
     
     <nav class="side-menu">
@@ -40,7 +40,12 @@ if($_SESSION["rol_id"]==1){
             </a>
         </li>
 
-
+        <li class="blue-dirty">
+            <a href="..\MntUsuario\">
+                <span class="glyphicon glyphicon-th"></span>
+                <span class="lbl">Mantenimiento Usuario</span>
+            </a>
+        </li>
 
         <li class="blue-dirty">
             <a href="..\ConsultarTicket\">
