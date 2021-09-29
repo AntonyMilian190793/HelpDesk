@@ -41,6 +41,7 @@
 				</header>
 
 				<div class="box-typical box-typical-padding">
+				<button type="button" id="btnnuevo" class="btn btn-inline btn-primary">Nuevo Registro</button>
 				<table id="usuario_data" class="table table-bordered table-striped table-vcenter js-dataTable-full">
 					<thead>
 						<tr>
@@ -61,6 +62,8 @@
 		</div>
 	</div>
 	<!-- contenido -->
+
+	<?php require_once("modalmantenimiento.php"); ?>
 
     <?php require_once("../MainJs/js.php"); ?>
 	

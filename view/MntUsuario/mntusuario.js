@@ -1,7 +1,34 @@
 var tabla;
 
 function init() {
+    $("#usuario_form").on("submit", function(e){
+        guardaryeditar(e);
+    });
+}
 
+function guardaryeditar(e){
+    e.preventDefault();
+	var formData = new FormData($("#usuario_form")[0]);
+    $.ajax({
+        url: "../../controller/usuario.php?op=guardaryeditar",
+        type: "POST",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function(datos){    
+            console.log(datos);
+            $('#usuario_form')[0].reset();
+            $("#modalmantenimiento").modal('hide');
+            $('#usuario_data').DataTable().ajax.reload();
+
+            swal({
+                title: "HelpDesk!",
+                text: "Completado.",
+                type: "success",
+                confirmButtonClass: "btn-success"
+            });
+        }
+    }); 
 }
 
 $(document).ready(function(){
@@ -63,7 +90,20 @@ $(document).ready(function(){
     });
 
 function editar(usu_id){
-    console.log(usu_id);
+    $('#mdltitulo').html('Editar Registro');
+    
+    $.post("../../controller/usuario.php?op=mostrar", { usu_id : usu_id }, function(data){
+        data = JSON.parse(data);
+        $('#usu_id').val(data.usu_id);
+        $('#usu_nom').val(data.usu_nom);
+        $('#usu_ape').val(data.usu_ape);
+        $('#usu_correo').val(data.usu_correo);
+        $('#usu_pass').val(data.usu_pass);
+        $('#rol_id').val(data.rol_id).trigger('change');     
+    });
+
+    $('#modalmantenimiento').modal('show');
+    // console.log(usu_id); solo nos sirve para ver que funcione todo pero en la consola
 }
 
 function eliminar(usu_id){
@@ -96,4 +136,9 @@ function eliminar(usu_id){
     });
 }
 
+$(document).on("click", "#btnnuevo", function(){
+    $('#mdltitulo').html('Nuevo Registro');
+    $('#usuario_form')[0].reset();
+    $('#modalmantenimiento').modal('show');
+});
 init();

@@ -61,7 +61,6 @@
             usu_ape = ?,
             usu_correo = ?,
             usu_pass = ?,
-            usu_nom = ?,
             rol_id = ? 
             WHERE
             usu_id = ? ";
