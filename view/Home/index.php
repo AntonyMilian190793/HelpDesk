@@ -1,47 +1,95 @@
 <?php
 
-	require_once("../../config/conexion.php");
-	if(isset($_SESSION["usu_id"])){
+require_once("../../config/conexion.php");
+if (isset($_SESSION["usu_id"])) {
 
 ?>
 
-<!DOCTYPE html>
-<html>
+	<!DOCTYPE html>
+	<html>
 
-    <?php require_once("../MainHead/head.php");?>
+	<?php require_once("../MainHead/head.php"); ?>
 
-    <title>It For You::Home</title>
+	<title>It For You::Home</title>
 
-</head>
-<body class="with-side-menu">
+	</head>
 
-    <?php require_once("../MainHeader/header.php"); ?>
+	<body class="with-side-menu">
+
+		<?php require_once("../MainHeader/header.php"); ?>
 
 
-	<div class="mobile-menu-left-overlay"></div>
+		<div class="mobile-menu-left-overlay"></div>
 
-	
-	<?php require_once("../MainNav/nav.php"); ?>
 
-	<!-- Contenido -->
-	<div class="page-content">
-		<div class="container-fluid">
-			Blank page.
+		<?php require_once("../MainNav/nav.php"); ?>
+
+		<!-- Contenido -->
+		<div class="page-content">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-xl-12">
+						<div class="row">
+							<div class="col-sm-4">
+								<article class="statistic-box green">
+									<div>
+										<div class="number" id="lbltotal"></div>
+										<div class="caption">
+											<div>Total de Tickets</div>
+										</div>
+									</div>
+								</article>
+							</div>
+							<div class="col-sm-4">
+								<article class="statistic-box yellow">
+									<div>
+										<div class="number" id="lbltotalabierto"></div>
+										<div class="caption">
+											<div>Total de Tickets Abiertos</div>
+										</div>
+									</div>
+								</article>
+							</div>
+							<div class="col-sm-4">
+								<article class="statistic-box red">
+									<div>
+										<div class="number" id="lbltotalcerrado"></div>
+										<div class="caption">
+											<div>Total de Tickets Cerrados</div>
+										</div>
+									</div>
+								</article>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<section class="card">
+					<header class="card-header">
+						Grafico Estadístico
+					</header>
+					<div class="card-block">
+						<div id="divgrafico" style="height: 250px;"></div>
+					</div>
+				</section>
+
+			</div>
 		</div>
-	</div>
-	<!-- contenido -->
+		<!-- Contenido -->
 
-    <?php require_once("../MainJs/js.php"); ?>
-	
-	<script type="text/javascript" src="home.js"></script>
 
-<script src="js/app.js"></script>
-</body>
-</html>
+		<?php require_once("../MainJs/js.php"); ?>
+
+		<script type="text/javascript" src="home.js"></script>
+
+		<script src="js/app.js"></script>
+	</body>
+
+	</html>
 <?php
 
-	}else{
-		header("Location:".Conectar::ruta()."index.php");
-	}
+} else {
+	header("Location:" . Conectar::ruta() . "index.php");
+}
 
 ?>
