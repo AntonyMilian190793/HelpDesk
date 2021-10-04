@@ -190,7 +190,12 @@
             }
             echo json_encode($output);
             }   
-        break; 
+        break;
+        
+        case "grafico";
+            $datos=$ticket->get_ticket_grafico();  
+            echo json_encode($datos);
+        break;
     }
 
 ?>    

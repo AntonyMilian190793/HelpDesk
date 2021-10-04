@@ -28,7 +28,7 @@
 
                     <div class="form-group">
                         <label class="form-label" for="usu_pass">Contraseña</label>
-                        <input type="text" class="form-control" id="usu_pass" name="usu_pass" placeholder="************" required>
+                        <input type="text" class="form-control" minlength="8" maxlength="16" id="usu_pass" name="usu_pass" placeholder="************" required>
                     </div>
 
                     <div class="form-group">
