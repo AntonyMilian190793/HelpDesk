@@ -103,6 +103,18 @@
     $datos=$usuario->get_usuario_grafico($_POST["usu_id"]);  
     echo json_encode($datos);
     break;
+
+    case "combo";
+        $datos = $usuario->get_usuariox_rol();
+        if(is_array($datos) == true AND count($datos) > 0){
+            $html.= "<option label='Seleccionar'></option>";
+
+            foreach($datos as $row){
+                $html.= "<option value='".$row['usu_id']."'>".$row['usu_nom']." ".$row['usu_ape']."</option>";
+            }
+            echo $html;
+        }
+    break;
     }
 
 ?>    

@@ -4,6 +4,9 @@
     require_once("../models/Ticket.php");
     $ticket = new Ticket();
 
+    require_once("../models/Usuario.php");
+    $usuario = new Usuario();
+
     switch($_GET["op"]){
         case "insert":
             $ticket->insert_ticket($_POST["usu_id"], $_POST["cat_id"], $_POST["tick_titulo"], $_POST["tick_descrip"]);
@@ -12,6 +15,10 @@
         case "update":
             $ticket->update_ticket($_POST["tick_id"]);
             $ticket->insert_ticketdetalle_cerrar($_POST["tick_id"], $_POST["usu_id"]);
+        break;
+
+        case "asignar":
+            $ticket->update_ticket_asignacion($_POST["tick_id"], $_POST["usu_asig"]);
         break;
         
         case "listar_x_usu":
@@ -31,6 +38,27 @@
                 }
                 
                 $sub_array[] = date("d/m/Y H:i:s", strtotime($row["fech_crea"]));
+
+                
+                // fecha asignar
+                if($row["fech_asig"] == null){
+                    $sub_array[] = '<span class="label label-pill label-default">Sin Asignar</span>';
+                }else{
+                    $sub_array[] = date("d/m/Y H:i:s", strtotime($row["fech_asig"]));
+                }
+
+                //usuario asignar
+                if($row["usu_asig"] == null){
+                    $sub_array[] = '<span class="label label-pill label-warning">Sin Asignar</span>';
+                }else{
+                    $datos1 = $usuario->get_usuario_x_id($row["usu_asig"]);
+
+                    foreach($datos1 as $row1){
+                        $sub_array[] = '<span class="label label-pill label-success">'.$row1["usu_nom"].' '.$row1["usu_ape"].'</span>';
+                    }
+                }
+
+
                 $sub_array[] = '<button type="button" onClick="ver('.$row["ticket_id"].');"  id="'.$row["ticket_id"].'" class="btn btn-inline primary btn-sm ladda-button"><i class="fa fa-eye"></i></button>';
                 $data[] = $sub_array;
             }
@@ -60,6 +88,25 @@
                 }
 
                 $sub_array[] = date("d/m/Y H:i:s", strtotime($row["fech_crea"]));
+
+                // fecha asignar
+                if($row["fech_asig"] == null){
+                    $sub_array[] = '<span class="label label-pill label-default">Sin Asignar</span>';
+                }else{
+                    $sub_array[] = date("d/m/Y H:i:s", strtotime($row["fech_asig"]));
+                }
+
+                //usuario asignar
+                if($row["usu_asig"] == null){
+                    $sub_array[] = '<a onClick="asignar('.$row["ticket_id"].');"><span class="label label-pill label-warning">Sin Asignar</span></a>';
+                }else{
+                    $datos1 = $usuario->get_usuario_x_id($row["usu_asig"]);
+
+                    foreach($datos1 as $row1){
+                        $sub_array[] = '<span class="label label-pill label-success">'.$row1["usu_nom"].' '.$row1["usu_ape"].'</span>';
+                    }
+                }
+                
                 $sub_array[] = '<button type="button" onClick="ver('.$row["ticket_id"].');"  id="'.$row["ticket_id"].'" class="btn btn-inline primary btn-sm ladda-button"><i class="fa fa-eye"></i></button>';
                 $data[] = $sub_array;
             }
@@ -73,7 +120,7 @@
         break;  
 
         case "listardetalle":
-                $datos = $ticket->listar_ticketdetalle_x_ticket($_POST["tick_id"]);
+                $datos = $ticket->listar_ticketdetalle_x_ticket($_POST["ticket_id"]);
                 ?>
 
                 <?php
@@ -127,7 +174,7 @@
         break;
 
         case "mostrar";
-            $datos = $ticket -> listar_ticket_x_id($_POST["tick_id"]);  
+            $datos = $ticket->listar_ticket_x_id($_POST["ticket_id"]);  
             if(is_array($datos) == true and count($datos) > 0){
                 foreach($datos as $row)
                 {

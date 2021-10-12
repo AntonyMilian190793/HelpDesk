@@ -94,6 +94,15 @@
             return $resultado = $sql->fetchAll(); 
         }
 
+        public function get_usuariox_rol(){
+            $conectar = parent::conexion();
+            parent::set_names();
+            $sql = "SELECT * FROM tm_usuario WHERE est=1 AND rol_id=2 ";
+            $sql = $conectar->prepare($sql);
+            $sql->execute();
+            return $resultado = $sql->fetchAll(); 
+        }
+
         public function get_usuario_x_id($usu_id){
             $conectar = parent::conexion();
             parent::set_names();

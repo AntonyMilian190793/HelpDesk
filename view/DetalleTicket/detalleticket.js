@@ -93,12 +93,12 @@ $(document).on("click", "#btncerrarticket", function(){
     });
 });
 
-function listardetalle(tick_id){
-    $.post("../../controller/ticket.php?op=listardetalle", { tick_id: tick_id}, function(data){
+function listardetalle(ticket_id){
+    $.post("../../controller/ticket.php?op=listardetalle", { ticket_id: ticket_id}, function(data){
         $('#lbldetalle').html(data);
     });
 
-    $.post("../../controller/ticket.php?op=mostrar", { tick_id: tick_id}, function(data){
+    $.post("../../controller/ticket.php?op=mostrar", { ticket_id: ticket_id}, function(data){
         data = JSON.parse(data);
         $('#lblestado').html(data.tick_estado);
         $('#lblnomusuario').html(data.usu_nom + ' ' + data.usu_ape);

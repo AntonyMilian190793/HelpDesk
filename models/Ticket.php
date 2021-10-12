@@ -2,18 +2,18 @@
 
     class Ticket extends Conectar{
 
-        public function insert_ticket($usu_id, $cat_id, $tick_titulo, $tick_descrip){
-            $conectar = parent::conexion();
-            parent::set_names();
-            $sql = "INSERT INTO tm_ticket (ticket_id, usu_id, cat_id, tick_titulo, tick_descrip, tick_estado, fech_crea, est) VALUES (NULL, ?, ?, ?, ?, 'Abierto', now(), '1');";
-            $sql = $conectar->prepare($sql);
-            $sql->bindValue(1, $usu_id);
-            $sql->bindValue(2, $cat_id);
-            $sql->bindValue(3, $tick_titulo);
-            $sql->bindValue(4, $tick_descrip);
-            $sql->execute();
-            return $resultado = $sql->fetchAll();
-        }
+    public function insert_ticket($usu_id, $cat_id, $tick_titulo, $tick_descrip){
+        $conectar = parent::conexion();
+        parent::set_names();
+        $sql = "INSERT INTO tm_ticket (ticket_id, usu_id, cat_id, tick_titulo, tick_descrip, tick_estado, fech_crea, usu_asig, fech_asig, est) VALUES (NULL, ?, ?, ?, ?, 'Abierto', now(), NULL, NULL, '1');";
+        $sql = $conectar->prepare($sql);
+        $sql->bindValue(1, $usu_id);
+        $sql->bindValue(2, $cat_id);
+        $sql->bindValue(3, $tick_titulo);
+        $sql->bindValue(4, $tick_descrip);
+        $sql->execute();
+        return $resultado = $sql->fetchAll();
+    }
 
         public function listar_ticket_x_usu($usu_id){
             $conectar = parent::conexion();
@@ -24,7 +24,9 @@
             tm_ticket.tick_titulo, 
             tm_ticket.tick_descrip,
             tm_ticket.tick_estado,
-            tm_ticket.fech_crea, 
+            tm_ticket.fech_crea,
+            tm_ticket.usu_asig,
+            tm_ticket.fech_asig,
             tm_usuario.usu_nom, 
             tm_usuario.usu_ape, 
             tm_categoria.cat_nom 
@@ -41,7 +43,7 @@
 
     }
 
-    public function listar_ticket_x_id($tick_id){
+    public function listar_ticket_x_id($ticket_id){
         $conectar = parent::conexion();
         parent::set_names();
         $sql="SELECT 
@@ -64,7 +66,7 @@
             tm_ticket.est = 1
             AND tm_ticket.ticket_id = ?";
         $sql = $conectar->prepare($sql);
-        $sql -> bindValue(1, $tick_id);
+        $sql -> bindValue(1, $ticket_id);
         $sql -> execute();
         return $resultado=$sql->fetchAll();
     }
@@ -78,7 +80,9 @@
         tm_ticket.tick_titulo, 
         tm_ticket.tick_descrip,
         tm_ticket.tick_estado,
-        tm_ticket.fech_crea, 
+        tm_ticket.fech_crea,
+        tm_ticket.usu_asig,
+        tm_ticket.fech_asig, 
         tm_usuario.usu_nom, 
         tm_usuario.usu_ape, 
         tm_categoria.cat_nom 
@@ -134,6 +138,17 @@
         $sql = "UPDATE tm_ticket SET tick_estado = 'Cerrado' WHERE ticket_id = ?";
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $tick_id);
+        $sql->execute();
+        return $resultado = $sql->fetchAll();
+    }
+
+    public function update_ticket_asignacion($tick_id, $usu_asig){
+        $conectar = parent::conexion();
+        parent::set_names();
+        $sql = "UPDATE tm_ticket SET usu_asig = ?, fech_asig = now() WHERE ticket_id = ?";
+        $sql = $conectar->prepare($sql);
+        $sql->bindValue(1, $usu_asig);
+        $sql->bindValue(2, $tick_id);
         $sql->execute();
         return $resultado = $sql->fetchAll();
     }
