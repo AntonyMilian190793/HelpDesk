@@ -34,13 +34,18 @@ $(document).ready(function() {
 });
 
 function guardaryeditar(e){
-
     e.preventDefault();
     var formData = new FormData($("#ticket_form")[0]);
     if($('#tick_descrip').summernote('isEmpty') || $('#tick_titulo').val() == ''){
         swal("Advetencia!", "Campos Vacíos", "warning");
     }else{
 
+        var totalfiles = $('#fileElem').val().length;
+
+        for(var i = 0; i < totalfiles; i++){
+            formData.append("files[]", $('#fileElem')[0].files[i]);
+        }
+        
         $.ajax({
             url:"../../controller/ticket.php?op=insert", 
             type: "POST",
