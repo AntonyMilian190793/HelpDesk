@@ -63,20 +63,37 @@ if (isset($_SESSION["usu_id"])) {
 								<input type="text" class="form-control" id="tick_titulo" name="tick_titulo" readonly>
 							</fieldset>
 						</div>
-						
+
+						<div class="col-lg-12">
+							<fieldset class="form-group">
+								<label class="form-label semibold" for="tick_titulo">Documentos Adicionales</label>
+								<table id="documentos_data" class="table table-bordered table-striped table-vcenter js-dataTable-full">
+									<thead>
+										<tr>
+											<th style="width: 90%;">Nombre</th>
+											<th class="text-center" style="width: 10%;"></th>
+										</tr>
+									</thead>
+									<tbody>
+
+									</tbody>
+								</table>
+							</fieldset>
+						</div>
+
 						<div class="col-lg-12">
 							<fieldset class="form-group">
 								<label class="form-label semibold" for="tickd_descripusu">Descripción</label>
 								<div class="summernote-theme-1">
-										<textarea id="tickd_descripusu" name="tickd_descripusu" class="summernote" name="name"></textarea>
-									</div>
+									<textarea id="tickd_descripusu" name="tickd_descripusu" class="summernote" name="name"></textarea>
+								</div>
 							</fieldset>
 						</div>
 
 					</div>
 				</div>
 
-				
+
 
 				<section class="activity-line" id="lbldetalle">
 
@@ -84,25 +101,25 @@ if (isset($_SESSION["usu_id"])) {
 
 				<div class="box-typical box-typical-padding" id="pnldetalle">
 
-				<p>
-					Ingrese su duda o consulta
+					<p>
+						Ingrese su duda o consulta
 
-				</p>
+					</p>
 
 					<div class="row">
-							
-							<div class="col-lg-12">
-								<fieldset class="form-group">
-									<label class="form-label semibold" for="tickd_descip">Descripción</label>
-									<div class="summernote-theme-1">
-										<textarea id="tickd_descrip" name="tickd_descrip" class="summernote" name="name"></textarea>
-									</div>
-								</fieldset>
-							</div>
-							<div class="col-lg-12">
-								<button type="button" id="btnenviar" class="btn btn-rounded btn-inline btn-primary">Enviar</button>
-								<button type="button" id="btncerrarticket" class="btn btn-rounded btn-inline btn-warning">Cerrar Ticket</button>
-							</div>
+
+						<div class="col-lg-12">
+							<fieldset class="form-group">
+								<label class="form-label semibold" for="tickd_descip">Descripción</label>
+								<div class="summernote-theme-1">
+									<textarea id="tickd_descrip" name="tickd_descrip" class="summernote" name="name"></textarea>
+								</div>
+							</fieldset>
+						</div>
+						<div class="col-lg-12">
+							<button type="button" id="btnenviar" class="btn btn-rounded btn-inline btn-primary">Enviar</button>
+							<button type="button" id="btncerrarticket" class="btn btn-rounded btn-inline btn-warning">Cerrar Ticket</button>
+						</div>
 					</div>
 				</div>
 

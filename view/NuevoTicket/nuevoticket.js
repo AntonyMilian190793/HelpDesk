@@ -42,7 +42,7 @@ function guardaryeditar(e){
 
         var totalfiles = $('#fileElem').val().length;
 
-        for(var i = 0; i < totalfiles; i++){
+        for (var i = 0; i < totalfiles; i++) {
             formData.append("files[]", $('#fileElem')[0].files[i]);
         }
         
