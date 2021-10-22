@@ -52,8 +52,13 @@ function guardaryeditar(e){
             data: formData,
             contentType: false,
             processData: false,
-            success: function(datos){
-                console.log(datos);
+            success: function(data){
+                data = JSON.parse(data);
+                console.log(data[0].ticket_id);
+                $.post("../../controller/email.php?op=ticket_abierto", { ticket_id : data[0].ticket_id }, function(data){
+
+                });
+                
                 $('#tick_titulo').val('');
                 $('#tick_descrip').summernote('reset');
                 swal("Correcto!", "Registrado Correctamente", "success");

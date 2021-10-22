@@ -153,6 +153,11 @@ $(document).on("click", "#btncerrarticket", function(){
             $.post("../../controller/ticket.php?op=update", { tick_id : tick_id, usu_id : usu_id }, function(data){
                 
             });
+
+            $.post("../../controller/email.php?op=ticket_cerrado", {ticket_id : tick_id}, function (data) {
+
+            });
+
             listardetalle(tick_id);
             swal({
                 title: "HelpDesk!",

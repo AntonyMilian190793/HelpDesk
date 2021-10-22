@@ -150,6 +150,11 @@ $(document).ready(function(){
             contentType: false,
             processData: false,
             success: function(datos){
+                var tick_id = $('#tick_id').val();
+                $.post("../../controller/email.php?op=ticket_asignado", {ticket_id : tick_id}, function (data) {
+
+                });
+                swal("Correcto!", "Asginado Correctamente", "success");
                 $("#modalasignar").modal('hide');
                 $('#ticket_data').DataTable().ajax.reload();
             }
