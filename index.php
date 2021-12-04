@@ -84,10 +84,8 @@
                         <div class="checkbox float-left">
                             <input type="checkbox" id="signed-in"/>
                         </div>
-                        <div class="float-right reset">
-                            <a href="reset-password.html">Cambiar Contraseña</a>
-                        </div>
-                        <div class="float-left reset">
+
+                        <div class="row d-flex justify-content-center text-center reset">
                             <a href="#" id="btnsoporte">Acceso Soporte</a>
                         </div>
                     </div>
